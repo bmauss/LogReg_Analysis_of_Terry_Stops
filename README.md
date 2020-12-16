@@ -10,7 +10,7 @@ A Logistic Analysis of Terry Stops
 ## What modeling algorithm works best for this dataset?
 We had a few contenders.  Decision Trees had perfect precision, recall, accuracy, and F1 scores.  XGBoost and Random Forest had scores that were just as good.  In the end, the decision came down to feature importance.  The only model that gave us any real information was our Random Forest model.
 
-<img src="Images/feature importance.PNG" width=500>
+![github](https://raw.githubusercontent.com/bmauss/LogReg_Analysis_of_Terry_Stops/master/Images/images/dec_tree_feats.png)
 
 Decision Tree and XGBoost only used the feature "Stop Resolution".  Random Forest was the **only** high performing model that considered other variables.  The reason for this is simply that **the nature of the algorithm** made it so that **some of the trees** in the forest **could not rely on "Stop_Resolution"** since that column wasn't assigned to them.  Thus, those trees in the forest were forced to find correlations in other features.
 
@@ -18,7 +18,7 @@ So the question then is ***why did the other models rely so heavily on "Stop Res
 
 ## Is there a relationship between Terry Stops and a subject's race?
 
-<img src="Images/stops race.PNG" width=500>
+![github](https://raw.githubusercontent.com/bmauss/LogReg_Analysis_of_Terry_Stops/master/Images/images/racerelations.png)
 
 In short, yes.  Native Americans and African-Americans are stopped disproportionately to their respective populations.  Native Americans are stopped the most with African Americans coming next.  On the surface level, it definitely looks as though racial discrimination plays a factor in who will be subjected to a Terry Stop.  There is still a couple of problems, however.  One is: **Who is perpetuating this discrimination?**  The dataset **does not contain enough information** on whether the Terry Stop was **initiated** by an **officer** on the street, like in *Terry v. Ohio* or if it was **in response to a citizen** who called in reporting a suspicious person. After all, if it is in response to a citizen's complaint, an officer can only go off of a description given by the citizen.  The other problem is that we don't have enough information to determine if this is just a glimpse into a much more complex social issue: crimes commited as a result of socio-economic inequality. 
 
@@ -29,13 +29,13 @@ Next, the reporting system should be updated to differentiate between officer in
 
 ## Do the differences in races of the police officer and the subject play a role?
 
-<img src="Images/dif race.PNG" width=500>
+![github](https://raw.githubusercontent.com/bmauss/LogReg_Analysis_of_Terry_Stops/master/Images/images/same_race.png)
 
 Yes, but in a surprising way!  Seattle officers that are of a different race from the subject are less likely to arrest or frisk them.  There could be a couple of reasons for this.  One is that an officer whose race is different is more hesitant and doesn't want to risk the possibility of their actions being considered racist.  Another explanation is that the officers in Seattle are assigned to beats where the local demographics match their own.  Either way, assuming that these arrests and frisk searches were warranted, it's good to see that the enforcement of the law is roughly equal. 
 
 From a racial relations perspective, there isn't much of a problem, but a concern is raised when we look at the gap between percentage of people arrested and percentage of those who were frisked.  When we add these columns together, roughly **40% of people stopped are frisk searched**, but only around **10% of people are actually arrested**. We looked a little deeper into this found this:
 
-<img src="Images/the gap" width=500>
+![github](https://raw.githubusercontent.com/bmauss/LogReg_Analysis_of_Terry_Stops/master/Images/images/arrests%20vs%20frisk.PNG)
 
 When you filter out the people who are both arrested and frisked, you can still see this gap.  If people were carrying something illegal, they'd probably be arrested and that gap would be smaller.  If we were to assume that these stops were made under the same circumstances as *Terry v. Ohio*, we would make the assumption that a majority of people are having their 4th Amendment Rights violated.  As mentioned before, the **gap** between the **number of people frisked** and **number of arrests** is **indicative** of this.  This also hurts public perception of the police considering that these subjects are still **racially disproportionate**.  
 
@@ -48,7 +48,7 @@ In ***Terry v. Ohio***, Officer McFadden observed two men look through a store w
 
 In Seattle, Terry Stops take on a much broader definition.
 
-<img src="Image/results of terry stops" width=500>
+![github](https://raw.githubusercontent.com/bmauss/LogReg_Analysis_of_Terry_Stops/master/Images/images/stopresolutions.png)
 
 A **large majority** of officer interactions with subjects falls under the category of obtaining an **offense report**. Again, activities associated with this are **interviewing witnesses** and **obtaining information from victims** of crimes.  The next biggest outcome of a Terry Stop is a subject being issued a citation (**non-custodial arrest**).  These include traffic citations.  A field contact can be anything from community outreach to frisking someone.  These definitions are very broad and make if difficult to classify what leads to an arrest.  These circumstances also don't resemble those surrounding *Terry v. Ohio*.  We've also seen that the officers in Seattle appear to be a little to quick to perform frisk searches.
 
